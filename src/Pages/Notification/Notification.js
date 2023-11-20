@@ -1,17 +1,16 @@
 import React from "react";
-import "./Announcement.css";
 import Sidenav from "../Dashboard/Sidenav";
 import Header from "../Components/Header";
 
-const Announcement = () => {
+const Notification = () => {
   return (
     <>
       <Sidenav />
       <div className="dashboard-options" id="announcement">
-        <Header title="Announcement" src="./images/Announcement-dash.svg" />
+        <Header title="Notification" src="./images/Notification-dash.svg" />
       </div>
     </>
   );
 };
 
-export default Announcement;
+export default Notification;

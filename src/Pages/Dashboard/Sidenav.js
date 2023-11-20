@@ -43,40 +43,46 @@ const Sidenav = () => {
             </Link>
           </li>
           <li className="nav-item p-3 fs-5">
-            <img
-              src="/images/notification.svg"
-              className="sidenav-logo me-1"
-              alt="notification-img"
-              style={{
-                height: "30px",
-                widows: "30px",
-              }}
-            ></img>
-            Notification
+            <Link to="/notification" className="li-link">
+              <img
+                src="/images/notification.svg"
+                className="sidenav-logo me-1"
+                alt="notification-img"
+                style={{
+                  height: "30px",
+                  widows: "30px",
+                }}
+              ></img>
+              Notification
+            </Link>
           </li>
           <li className="nav-item p-3 fs-5">
-            <img
-              src="/images/department.svg"
-              className="sidenav-logo me-1"
-              alt="department-img"
-              style={{
-                height: "30px",
-                widows: "30px",
-              }}
-            ></img>
-            Department
+            <Link to="/department" className="li-link">
+              <img
+                src="/images/department.svg"
+                className="sidenav-logo me-1"
+                alt="department-img"
+                style={{
+                  height: "30px",
+                  widows: "30px",
+                }}
+              ></img>
+              Department
+            </Link>
           </li>
           <li className="nav-item p-3 fs-5">
-            <img
-              src="/images/event.svg"
-              className="sidenav-logo me-1"
-              alt="event-img"
-              style={{
-                height: "25px",
-                widows: "25px",
-              }}
-            ></img>
-            Event
+            <Link to="/event" className="li-link">
+              <img
+                src="/images/event.svg"
+                className="sidenav-logo me-1"
+                alt="event-img"
+                style={{
+                  height: "25px",
+                  widows: "25px",
+                }}
+              ></img>
+              Event
+            </Link>
           </li>
         </ul>
         <div className="profile">

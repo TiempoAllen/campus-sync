@@ -1,17 +1,16 @@
 import React from "react";
-import "./Announcement.css";
 import Sidenav from "../Dashboard/Sidenav";
 import Header from "../Components/Header";
 
-const Announcement = () => {
+const Department = () => {
   return (
     <>
       <Sidenav />
       <div className="dashboard-options" id="announcement">
-        <Header title="Announcement" src="./images/Announcement-dash.svg" />
+        <Header title="Department" src="./images/Department-dash.svg" />
       </div>
     </>
   );
 };
 
-export default Announcement;
+export default Department;
