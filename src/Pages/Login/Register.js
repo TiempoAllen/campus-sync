@@ -96,7 +96,7 @@ const Register = () => {
           </Form.Submit>
           <div className="navigateSignup">
             <p>
-              Already have an account?
+              Already have an account?{" "}
               <span onClick={navigateToLogin} style={{ cursor: "pointer" }}>
                 Login
               </span>
