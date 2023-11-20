@@ -1,10 +1,13 @@
 import React from "react";
 import * as Form from "@radix-ui/react-form";
-import * as Checkbox from "@radix-ui/react-checkbox";
-import { CheckIcon } from "@radix-ui/react-icons";
-import "./login.css";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate();
+
+  const navigateToLogin = () => {
+    navigate("/");
+  };
   return (
     <div className="login-body">
       <div className="login-page">
@@ -83,13 +86,20 @@ const Register = () => {
             </Form.Control>
           </Form.Field>
           <Form.Submit asChild>
-            <button className="Button" style={{ marginTop: 10 }}>
+            <button
+              className="Button"
+              style={{ marginTop: 10 }}
+              onClick={navigateToLogin}
+            >
               Register
             </button>
           </Form.Submit>
           <div className="navigateSignup">
             <p>
-              Already have an account? <span>Login</span>
+              Already have an account?
+              <span onClick={navigateToLogin} style={{ cursor: "pointer" }}>
+                Login
+              </span>
             </p>
           </div>
         </Form.Root>

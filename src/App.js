@@ -2,7 +2,7 @@ import React from "react";
 import LoginPage from "./Pages/Login/LoginPage";
 import Register from "./Pages/Login/Register";
 import Dashboard from "./Pages/Dashboard/Dashboard";
-import Announcement from "./Pages/Dashboard/Announcement";
+import Announcement from "./Pages/Announcement/Announcement";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const App = () => {

@@ -1,5 +1,6 @@
 import React from "react";
-import Sidenav from "./Sidenav";
+import "./Announcement.css";
+import Sidenav from "../Dashboard/Sidenav";
 import { Paper, InputBase } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import IconButton from "@mui/material/IconButton";
@@ -24,7 +25,7 @@ const Announcement = () => {
                 display: "flex",
                 alignItems: "center",
                 borderRadius: "20px",
-                width: "100%",
+                width: "800px",
               }}
             >
               <InputBase

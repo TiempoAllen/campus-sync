@@ -5,15 +5,6 @@
     justify-content: end;
 }
 
-.dashboard-options {
-    background-color: #d9d9d9;
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    padding: 30px;
-    margin-left: 360px;
-}
-
 .side-nav {
     height: 100vh;
     display: flex;
@@ -190,12 +181,4 @@
 
 .nav-item {
     cursor: pointer;
-}
-
-#announcement {}
-
-.img-dash {
-    height: 110px;
-    width: 110px;
-    margin-right: 10px;
 }

@@ -1,0 +1,18 @@
+.dashboard-options {
+    background-color: #d9d9d9;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    padding: 30px;
+    margin-left: 360px;
+}
+
+#announcement .header .titles {
+    margin-top: 10px;
+}
+
+.img-dash {
+    height: 115px;
+    width: 115px;
+    margin-right: 10px;
+}
