@@ -1,0 +1,171 @@
+.DialogOverlay {
+    background-color: var(--black-a9);
+    position: fixed;
+    inset: 0;
+    animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.DialogContent {
+    background-color: #1E1E1E;
+    border-radius: 6px;
+    box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    min-height: 200px;
+    padding: 25px;
+    animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+    color: white;
+}
+
+.DialogContent:focus {
+    outline: none;
+}
+
+.DialogTitle {
+    margin: 0;
+    font-weight: 500;
+    color: var(--mauve-12);
+    font-size: 17px;
+}
+
+.DialogDescription {
+    margin: 10px 0 20px;
+    color: var(--mauve-11);
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.Button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    padding: 0 15px;
+    font-size: 15px;
+    line-height: 1;
+    font-weight: 500;
+    height: 35px;
+}
+
+.Button.violet {
+    background-color: white;
+    color: var(--violet-11);
+    box-shadow: 0 2px 10px var(--black-a7);
+}
+
+.Button.violet:hover {
+    background-color: var(--mauve-3);
+}
+
+.Button.violet:focus {
+    box-shadow: 0 0 0 2px black;
+}
+
+.dialog-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    gap: 15px;
+}
+
+#cancel-button {
+    color: #8F8F8F;
+    background-color: #3B3E45;
+}
+
+.Button.green {
+    background-color: #1A62D7;
+    color: var(--green-11);
+    width: auto;
+    margin: 0;
+}
+
+.Button.green:hover {
+    background-color: #84a0ce;
+}
+
+
+.IconButton {
+    font-family: inherit;
+    border-radius: 100%;
+    height: 25px;
+    width: 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--violet-11);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.IconButton:hover {
+    background-color: var(--violet-4);
+}
+
+.IconButton:focus {
+    box-shadow: 0 0 0 2px var(--violet-7);
+}
+
+.Fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: start;
+    justify-content: start;
+    margin-bottom: 15px;
+}
+
+.Label {
+    font-size: 15px;
+    color: var(--violet-11);
+    width: 150px;
+}
+
+.Input {
+    width: 100%;
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 0 10px;
+    font-size: 15px;
+    line-height: 1;
+    color: white;
+    box-shadow: 0 0 0 1px var(--violet-7);
+    background-color: #121212;
+    padding: 5px 8px;
+    height: 60px;
+}
+
+.Input:focus {
+    box-shadow: 0 0 0 2px var(--violet-8);
+}
+
+@keyframes overlayShow {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes contentShow {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -48%) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}

@@ -25,7 +25,7 @@ const Register = () => {
                 <Form.Label className="FormLabel">First Name</Form.Label>
               </div>
               <Form.Control asChild>
-                <input className="Input" type="text" required />
+                <input className="Login-Input" type="text" required />
               </Form.Control>
             </Form.Field>
             <Form.Field className="FormField" name="last name">
@@ -39,7 +39,7 @@ const Register = () => {
                 <Form.Label className="FormLabel">Last Name</Form.Label>
               </div>
               <Form.Control asChild>
-                <input className="Input" type="email" required />
+                <input className="Login-Input" type="email" required />
               </Form.Control>
             </Form.Field>
           </div>
@@ -54,7 +54,7 @@ const Register = () => {
               <Form.Label className="FormLabel">Email</Form.Label>
             </div>
             <Form.Control asChild>
-              <input className="Input" type="email" required />
+              <input className="Login-Input" type="email" required />
             </Form.Control>
           </Form.Field>
           <Form.Field className="FormField" name="password">
@@ -68,7 +68,7 @@ const Register = () => {
               <Form.Label className="FormLabel">Password</Form.Label>
             </div>
             <Form.Control asChild>
-              <input className="Input" type="password" required />
+              <input className="Login-Input" type="password" required />
             </Form.Control>
           </Form.Field>
           <Form.Field className="FormField" name="confirm password">
@@ -82,7 +82,7 @@ const Register = () => {
               <Form.Label className="FormLabel">Confirm Password</Form.Label>
             </div>
             <Form.Control asChild>
-              <input className="Input" type="password" required />
+              <input className="Login-Input" type="password" required />
             </Form.Control>
           </Form.Field>
           <Form.Submit asChild>

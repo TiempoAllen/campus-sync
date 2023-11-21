@@ -7,7 +7,7 @@ const AddButton = () => {
     <>
       <Fab
         aria-label="add"
-        className="position-absolute bottom-0 end-0"
+        className="position-absolute bottom-0 end-0 "
         sx={{
           height: "70px",
           width: "70px",

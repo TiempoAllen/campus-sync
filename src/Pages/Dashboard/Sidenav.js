@@ -85,7 +85,12 @@ const Sidenav = () => {
             </Link>
           </li>
         </ul>
-        <div className="profile">
+        <div
+          className="profile dropdown-toggle show"
+          data-bs-toggle="dropdown"
+          aria-expanded="true"
+          style={{ cursor: "pointer" }}
+        >
           <Avatar.Root className="AvatarRoot">
             <Avatar.Fallback className="AvatarFallback">JD</Avatar.Fallback>
           </Avatar.Root>
@@ -94,6 +99,21 @@ const Sidenav = () => {
             <p>john.doe@cit.edu</p>
           </div>
         </div>
+        <ul class="dropdown-menu dropdown-menu-white text-small shadow">
+          <li>
+            <a class="dropdown-item" href="#">
+              Profile
+            </a>
+          </li>
+          <li>
+            <hr class="dropdown-divider" />
+          </li>
+          <li>
+            <a class="dropdown-item" href="/">
+              Sign out
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   );

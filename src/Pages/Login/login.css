@@ -54,7 +54,7 @@ button {
     opacity: 0.8;
 }
 
-.Input,
+.Login-Input,
 .Textarea {
     display: inline-flex;
     align-items: center;
@@ -67,23 +67,23 @@ button {
     box-shadow: 0 0 0 1px var(--black-a9);
 }
 
-.Input:hover,
+.Login-Input:hover,
 .Textarea:hover {
     box-shadow: #5c6575;
 }
 
-.Input:focus,
+.Login-Input:focus,
 .Textarea:focus {
     box-shadow: #5c6575;
 }
 
-.Input::selection,
+.Login-Input::selection,
 .Textarea::selection {
     background-color: var(--black-a9);
     color: #424242;
 }
 
-.Input {
+.Login-Input {
     padding: 0 10px;
     height: 30px;
     width: 100%;

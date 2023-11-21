@@ -37,7 +37,7 @@ const LoginPage = () => {
               </Form.Message>
             </div>
             <Form.Control asChild>
-              <input className="Input" type="email" required />
+              <input className="Login-Input" type="email" required />
             </Form.Control>
           </Form.Field>
           <Form.Field className="FormField" name="question">
@@ -54,7 +54,7 @@ const LoginPage = () => {
               </Form.Message>
             </div>
             <Form.Control asChild>
-              <input className="Input" type="email" required />
+              <input className="Login-Input" type="email" required />
             </Form.Control>
           </Form.Field>
           <div style={{ display: "flex", alignItems: "center" }}>

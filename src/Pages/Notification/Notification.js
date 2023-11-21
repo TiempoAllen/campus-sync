@@ -1,7 +1,6 @@
 import React from "react";
 import Sidenav from "../Dashboard/Sidenav";
 import Header from "../Components/Header";
-import AddButton from "../Components/AddButton";
 import * as Tabs from "@radix-ui/react-tabs";
 
 const Notification = () => {
@@ -28,7 +27,6 @@ const Notification = () => {
             <h1 className="text-center">No notifications for today</h1>
           </Tabs.Content>
         </Tabs.Root>
-        <AddButton />
       </div>
     </>
   );
