@@ -16,7 +16,7 @@ const weekday = new Date().toLocaleDateString("en-US", { weekday: "long" });
 
 const date = getDate();
 
-const Body = () => {
+const Body = ({ name }) => {
   return (
     <div className="body">
       <div className="greetings">
@@ -33,8 +33,8 @@ const Body = () => {
               {date} {weekday}
             </p>
           </div>
-          <p style={{ marginBottom: "0" }}>
-            <span className="h2 fw-bold">Good Day, John!</span>
+          <p style={{ marginBottom: "0", wordWrap: "break-word" }}>
+            <span className="h2 fw-bold">Good Day, {name}!</span>
             <br />
             <span>Have a nice {weekday}!</span>
           </p>

@@ -7,7 +7,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import * as Separator from "@radix-ui/react-separator";
 
-const CalendarEvents = () => {
+const CalendarEvents = ({ handleChange }) => {
   return (
     <header class="calendar-events p-3 mb-3 border-bottom">
       <div class="container">
@@ -26,6 +26,7 @@ const CalendarEvents = () => {
               sx={{ ml: 1, flex: 1 }}
               placeholder="Search"
               inputProps={{ "aria-label": "search" }}
+              onChange={handleChange}
             />
             <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
               <SearchIcon />
