@@ -1,8 +1,11 @@
-.dashboard {
-    background-color: #d9d9d9;
+.dashboard-layout {
     display: flex;
-    flex-direction: row;
-    justify-content: end;
+}
+
+.dashboard {
+    flex: 1;
+    margin-left: 360px;
+    background-color: #d9d9d9;
     height: 100vh;
 }
 
@@ -14,45 +17,97 @@
     position: fixed;
 }
 
-.calendar-events {
+.body {
+    background-color: #D9D9D9;
+    padding: 18px 40px;
+    height: 100vh;
+    gap: 50px;
+}
+
+.center .greetings {
+    background-color: #374151;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    gap: 110px;
+    flex-direction: row;
+    align-items: center;
+    color: #e6e6e6;
+    justify-content: center;
+}
+
+.center .greetings #first-half .date {
+    background-color: #D9D9D9;
+    width: auto;
+    max-width: 300px;
+    border-radius: 10px;
+    padding: 4px;
+    margin-bottom: 40px;
+    color: #424242;
+    text-align: center;
+}
+
+.center .recent-posts p {
+    color: #424242;
+}
+
+.center .temp-posts {
+    height: 300px;
+}
+
+.center .temp-posts h1 {
+    color: #8c8b8b;
+}
+
+.li-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.nav-item {
+    cursor: pointer;
+}
+
+.body .sides {
     width: 35%;
 }
 
-.calendar-events .container {
+.calendar-events {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 0 15px;
 }
 
-.calendar-events .container .child .calendar {
+.calendar-events .calendar {
     margin-top: 20px;
     background-color: #ffffff;
     padding: 20px;
     border-radius: 15px;
     display: flex;
-    width: 75%;
+    width: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
 
-.calendar-events .container .child p {
+.calendar-events p {
     margin-bottom: 0;
 }
 
-.calendar-events .container .child .upcoming-events .todo-events {
+.calendar-events .upcoming-events {
+    width: 100%;
+}
+
+.calendar-events .upcoming-events .todo-events {
     background-color: #ffffff;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     border-radius: 15px;
     padding: 10px 5px 10px 20px;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
 }
 
 .SeparatorRoot[data-orientation='vertical'] {
@@ -134,53 +189,4 @@
     font-size: 15px;
     line-height: 1;
     font-weight: 500;
-}
-
-.body {
-    background-color: #D9D9D9;
-    color: #e6e6e6;
-    padding: 18px 30px;
-    height: 100vh;
-}
-
-.body .greetings {
-    background-color: #374151;
-    border-radius: 15px;
-    padding: 20px;
-    display: flex;
-    gap: 110px;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-.body .greetings #first-half .date {
-    background-color: #D9D9D9;
-    width: 200px;
-    border-radius: 10px;
-    padding: 3px;
-    margin-bottom: 40px;
-    color: #424242;
-    text-align: center;
-}
-
-.body .recent-posts p {
-    color: #424242;
-}
-
-.body .temp-posts {
-    height: 300px;
-}
-
-.body .temp-posts h1 {
-    color: #8c8b8b;
-}
-
-.li-link {
-    text-decoration: none;
-    color: inherit;
-}
-
-.nav-item {
-    cursor: pointer;
 }

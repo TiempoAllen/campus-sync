@@ -1,21 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import Sidenav from "./Sidenav";
 import Body from "./Body";
-import CalendarEvents from "./CalendarEvents";
 
 const Dashboard = () => {
-  const [name, setName] = useState("John");
-
-  const handleChange = (e) => {
-    const newName = e.target.value;
-    setName(newName);
-  };
   return (
-    <div>
+    <div className="dashboard-layout">
       <Sidenav />
       <div className="dashboard">
-        <Body name={name} />
-        <CalendarEvents handleChange={handleChange} />
+        <Body />
       </div>
     </div>
   );
