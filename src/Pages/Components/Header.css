@@ -1,5 +1,10 @@
+#header {
+    width: 100%;
+}
+
 #header .titles {
     margin-top: 10px;
+    width: 100%;
 }
 
 .img-dash {

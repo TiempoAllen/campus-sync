@@ -18,7 +18,7 @@ const Header = ({ title, src }) => {
               display: "flex",
               alignItems: "center",
               borderRadius: "20px",
-              width: "800px",
+              width: "100%",
             }}
           >
             <InputBase

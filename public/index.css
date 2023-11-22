@@ -17,13 +17,13 @@
   .TabsRoot {
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 100%;
     box-shadow: 0 2px 10px var(--black-a4);
     margin-top: 10px;
   }
 
   .options-tablist {
-    width: 920px;
+    width: 100%;
     border-bottom: 1px solid #374151;
   }
 
@@ -77,7 +77,7 @@
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
     outline: none;
-    width: 920px;
+    width: 100%;
   }
 
   .TabsContent h1 {
