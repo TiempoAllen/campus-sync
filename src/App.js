@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Event from "./Pages/Event/Event";
 import Department from "./Pages/Department/Department";
 import Notification from "./Pages/Notification/Notification";
+import LandingLayout from "./Pages/LandingPage/LandingLayout";
 
 const App = () => {
   return (
@@ -14,7 +15,8 @@ const App = () => {
       <div className="App">
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<LoginPage />} />
+            <Route path="/" element={<LandingLayout />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<Register />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/announcement" element={<Announcement />} />

@@ -1,0 +1,14 @@
+.about-us {
+    margin-top: 73.6px;
+    padding: 0px;
+}
+
+.about-us .container img {
+    height: 500px;
+    width: 500px;
+}
+
+.showcase-btn .sign-in {
+    background-color: #374151;
+    margin-right: 20px;
+}

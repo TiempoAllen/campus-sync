@@ -9,9 +9,15 @@ const Register = () => {
   const [lname, setLname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confPass, setConfPass] = useState("");
 
   const handleRegister = async () => {
     try {
+      if (password !== confPass) {
+        alert("Password do not match");
+        return;
+      }
+
       const response = await axios.post(
         "http://localhost:8080/user/insertUser",
         {
@@ -25,6 +31,11 @@ const Register = () => {
     } catch (error) {
       console.error("Error message: ", error.message);
     }
+    setFname("");
+    setLname("");
+    setEmail("");
+    setPassword("");
+    setConfPass("");
   };
 
   const navigateToLogin = () => {
@@ -34,7 +45,7 @@ const Register = () => {
     <div className="login-body">
       <div className="login-page">
         <h4>Register</h4>
-        <Form.Root className="FormRoot">
+        <Form.Root className="FormRoot" autoComplete="off">
           <div className="register-name-div">
             <Form.Field className="FormField" name="first name">
               <div
@@ -125,7 +136,7 @@ const Register = () => {
               />
             </Form.Control>
           </Form.Field>
-          {/* <Form.Field className="FormField" name="confirm password">
+          <Form.Field className="FormField" name="confirm password">
             <div
               style={{
                 display: "flex",
@@ -136,9 +147,17 @@ const Register = () => {
               <Form.Label className="FormLabel">Confirm Password</Form.Label>
             </div>
             <Form.Control asChild>
-              <input className="Login-Input" type="password" />
+              <input
+                className="Login-Input"
+                type="password"
+                value={confPass}
+                onChange={(e) => {
+                  setConfPass(e.target.value);
+                }}
+                required
+              />
             </Form.Control>
-          </Form.Field> */}
+          </Form.Field>
           <Form.Submit asChild>
             <button
               type="button"
