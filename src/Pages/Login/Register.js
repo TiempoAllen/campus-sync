@@ -39,7 +39,7 @@ const Register = () => {
   };
 
   const navigateToLogin = () => {
-    navigate("/");
+    navigate("/login");
   };
   return (
     <div className="login-body">

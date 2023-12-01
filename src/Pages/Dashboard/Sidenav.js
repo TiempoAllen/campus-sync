@@ -109,7 +109,7 @@ const Sidenav = () => {
             <hr class="dropdown-divider" />
           </li>
           <li>
-            <a class="dropdown-item" href="/">
+            <a class="dropdown-item" href="/login">
               Sign out
             </a>
           </li>

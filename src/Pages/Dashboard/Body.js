@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import { Paper, InputBase } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
@@ -24,12 +24,6 @@ const weekday = new Date().toLocaleDateString("en-US", { weekday: "long" });
 const date = getDate();
 
 const Body = () => {
-  const [name, setName] = useState("John");
-
-  const handleChange = (e) => {
-    const newName = e.target.value;
-    setName(newName);
-  };
   return (
     <div className="body d-flex flex-row flex-grow-1">
       <div className="center">
@@ -48,7 +42,7 @@ const Body = () => {
               </p>
             </div>
             <p style={{ marginBottom: "0", wordWrap: "break-word" }}>
-              <span className="h2 fw-bold">Good Day, {name}!</span>
+              <span className="h2 fw-bold">Good Day, John!</span>
               <br />
               <span>Have a nice {weekday}!</span>
             </p>
@@ -84,7 +78,6 @@ const Body = () => {
               sx={{ ml: 1, flex: 1 }}
               placeholder="Search"
               inputProps={{ "aria-label": "search" }}
-              onChange={handleChange}
             />
             <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
               <SearchIcon />

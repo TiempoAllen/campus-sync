@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as Form from "@radix-ui/react-form";
 import * as Checkbox from "@radix-ui/react-checkbox";
 import { CheckIcon } from "@radix-ui/react-icons";
@@ -10,6 +10,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [user, setUser] = useState(null);
 
   const navigateToSignup = () => {
     navigate("/register");
@@ -19,6 +20,12 @@ const LoginPage = () => {
     navigate("/dashboard");
   };
 
+  useEffect(() => {
+    if (user) {
+      navigateToDashboard();
+    }
+  }, [user]);
+
   const handleLogin = async () => {
     try {
       const response = await axios.post("http://localhost:8080/user/login", {
@@ -26,15 +33,18 @@ const LoginPage = () => {
         password: password,
       });
       console.log(response.data);
-      if (response.data.message === "Email do not exists") {
-        alert("Email do not exists");
-      } else if (response.data.message === "Login Successful") {
-        navigate("/dashboard");
-      } else {
-        alert("Incorrect Email and Password");
+      if (response.data) {
+        setEmail("");
+        setPassword("");
+        setUser(response.data);
       }
     } catch (error) {
-      console.error(error);
+      console.log("Error: ", error.response.data);
+      if (error.response.data === "Invalid username or password") {
+        setEmail("");
+        setPassword("");
+        alert("Login unsuccessful");
+      }
     }
   };
   return (
@@ -86,7 +96,7 @@ const LoginPage = () => {
             <Form.Control asChild>
               <input
                 className="Login-Input"
-                type="email"
+                type="password"
                 value={password}
                 onChange={(e) => {
                   setPassword(e.target.value);
@@ -110,6 +120,7 @@ const LoginPage = () => {
           </div>
           <Form.Submit asChild>
             <button
+              type="button"
               className="Button"
               style={{ marginTop: 10 }}
               onClick={handleLogin}
