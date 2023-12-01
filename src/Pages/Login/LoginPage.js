@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import * as Form from "@radix-ui/react-form";
 import * as Checkbox from "@radix-ui/react-checkbox";
 import { CheckIcon } from "@radix-ui/react-icons";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useAuth } from "../../AuthContext";
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState(null);
+
+  const { login } = useAuth();
 
   const navigateToSignup = () => {
     navigate("/register");
@@ -19,12 +21,6 @@ const LoginPage = () => {
   const navigateToDashboard = () => {
     navigate("/dashboard");
   };
-
-  useEffect(() => {
-    if (user) {
-      navigateToDashboard();
-    }
-  }, [user]);
 
   const handleLogin = async () => {
     try {
@@ -36,7 +32,8 @@ const LoginPage = () => {
       if (response.data) {
         setEmail("");
         setPassword("");
-        setUser(response.data);
+        login(response.data);
+        navigateToDashboard();
       }
     } catch (error) {
       console.log("Error: ", error.response.data);

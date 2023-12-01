@@ -3,7 +3,7 @@ import * as Avatar from "@radix-ui/react-avatar";
 import "./Dashboard.css";
 import { Link } from "react-router-dom";
 
-const Sidenav = () => {
+const Sidenav = ({ user }) => {
   return (
     <div>
       <div
@@ -95,8 +95,10 @@ const Sidenav = () => {
             <Avatar.Fallback className="AvatarFallback">JD</Avatar.Fallback>
           </Avatar.Root>
           <div className="name">
-            <p className="fw-bold">John Doe</p>
-            <p>john.doe@cit.edu</p>
+            <p className="fw-bold">
+              {user.fname} {user.lname}
+            </p>
+            <p>{user.email}</p>
           </div>
         </div>
         <ul class="dropdown-menu dropdown-menu-white text-small shadow">

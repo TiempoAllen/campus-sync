@@ -5,11 +5,14 @@ import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as Tabs from "@radix-ui/react-tabs";
+import { useAuth } from "../../AuthContext";
 
 const Department = () => {
+  const { user } = useAuth();
+
   return (
     <>
-      <Sidenav />
+      <Sidenav user={user} />
       <div className="dashboard-options d-flex flex-column" id="announcement">
         <Header title="Department" src="./images/Department-dash.svg" />
         <Tabs.Root className="TabsRoot" defaultValue="tab1">

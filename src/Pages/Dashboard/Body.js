@@ -23,7 +23,7 @@ const weekday = new Date().toLocaleDateString("en-US", { weekday: "long" });
 
 const date = getDate();
 
-const Body = () => {
+const Body = ({ user }) => {
   return (
     <div className="body d-flex flex-row flex-grow-1">
       <div className="center">
@@ -42,7 +42,7 @@ const Body = () => {
               </p>
             </div>
             <p style={{ marginBottom: "0", wordWrap: "break-word" }}>
-              <span className="h2 fw-bold">Good Day, John!</span>
+              <span className="h2 fw-bold">Good Day, {user.fname}!</span>
               <br />
               <span>Have a nice {weekday}!</span>
             </p>

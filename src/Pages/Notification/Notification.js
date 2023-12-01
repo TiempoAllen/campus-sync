@@ -2,11 +2,13 @@ import React from "react";
 import Sidenav from "../Dashboard/Sidenav";
 import Header from "../Components/Header";
 import * as Tabs from "@radix-ui/react-tabs";
+import { useAuth } from "../../AuthContext";
 
 const Notification = () => {
+  const { user } = useAuth();
   return (
     <>
-      <Sidenav />
+      <Sidenav user={user} />
       <div className="dashboard-options d-flex flex-column" id="announcement">
         <Header title="Notification" src="./images/Notification-dash.svg" />
         <Tabs.Root className="TabsRoot" defaultValue="tab1">

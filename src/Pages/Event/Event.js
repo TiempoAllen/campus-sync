@@ -6,11 +6,13 @@ import AddIcon from "@mui/icons-material/Add";
 import * as Tabs from "@radix-ui/react-tabs";
 import * as Dialog from "@radix-ui/react-dialog";
 import "./Event.css";
+import { useAuth } from "../../AuthContext";
 
 const Event = () => {
+  const { user } = useAuth();
   return (
     <>
-      <Sidenav />
+      <Sidenav user={user} />
       <div className="dashboard-options d-flex flex-column" id="announcement">
         <Header title="Event" src="./images/Event-dash.svg" />
         <Tabs.Root className="TabsRoot" defaultValue="tab1">
