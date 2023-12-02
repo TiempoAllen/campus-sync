@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import * as Form from "@radix-ui/react-form";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+import FormControl from "@mui/material/FormControl";
 
 const Register = () => {
   const navigate = useNavigate();
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
+  const [role, setRole] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confPass, setConfPass] = useState("");
@@ -23,6 +27,7 @@ const Register = () => {
         {
           fname: fname,
           lname: lname,
+          role: role,
           email: email,
           password: password,
         }
@@ -92,7 +97,35 @@ const Register = () => {
               </Form.Control>
             </Form.Field>
           </div>
-          <Form.Field className="FormField" name="Email">
+          <Form.Field className="FormField" name="Role">
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <Form.Label className="FormLabel">Role</Form.Label>
+              <FormControl size="small" asChild>
+                <Select
+                  value={role}
+                  onChange={(e) => {
+                    setRole(e.target.value);
+                  }}
+                  displayEmpty
+                  inputProps={{ "aria-label": "Without label" }}
+                  sx={{ border: "solid 1px #424242" }}
+                  required
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value="User">User</MenuItem>
+                  <MenuItem value="Admin">Admin</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+          </Form.Field>
+          <Form.Field className="FormField" name="email">
             <div
               style={{
                 display: "flex",
