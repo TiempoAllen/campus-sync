@@ -6,13 +6,19 @@ import "./login.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../../AuthContext";
+import CloseIcon from "@mui/icons-material/Close";
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [appear, setAppear] = useState(false);
 
   const { login } = useAuth();
+
+  const handleAppear = () => {
+    setAppear(true);
+  };
 
   const navigateToSignup = () => {
     navigate("/register");
@@ -42,12 +48,24 @@ const LoginPage = () => {
       if (error.response.data === "Invalid username or password") {
         setEmail("");
         setPassword("");
-        alert("Login unsuccessful");
+        handleAppear();
       }
     }
   };
   return (
     <div className="login-body">
+      {appear && (
+        <div className="failed-message p-3 d-flex flex-row justify-content-around">
+          <p>Incorrect username or password.</p>
+          <div
+            onClick={() => {
+              setAppear(false);
+            }}
+          >
+            <CloseIcon sx={{ cursor: "pointer" }} />
+          </div>
+        </div>
+      )}
       <div className="login-page">
         <img src="/images/logo.png" className="app-logo" alt="logo" />
         <Form.Root className="FormRoot" autoComplete="off">
@@ -63,7 +81,11 @@ const LoginPage = () => {
               <Form.Message className="FormMessage" match="valueMissing">
                 Please enter your email
               </Form.Message>
-              <Form.Message className="FormMessage" match="typeMismatch">
+              <Form.Message
+                className="FormMessage"
+                match="typeMismatch"
+                style={{ color: "red" }}
+              >
                 Please provide a valid email
               </Form.Message>
             </div>

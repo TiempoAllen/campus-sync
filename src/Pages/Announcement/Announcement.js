@@ -8,6 +8,7 @@ import * as Tabs from "@radix-ui/react-tabs";
 import * as Dialog from "@radix-ui/react-dialog";
 import { useAuth } from "../../AuthContext";
 import axios from "axios";
+import * as AlertDialog from "@radix-ui/react-alert-dialog";
 
 const Announcement = () => {
   const { user } = useAuth();
@@ -16,8 +17,14 @@ const Announcement = () => {
   const [a_author, setA_Author] = useState("");
   const [date_posted, setDate_Posted] = useState("");
   const [expiry_date, setExpiry_Date] = useState("");
+  const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
 
   const saveAnnouncement = async () => {
+    if (!a_title || !a_content || !a_author || !date_posted || !expiry_date) {
+      console.error("All fields are required");
+      alert("All fields are required");
+      return;
+    }
     try {
       const response = await axios.post(
         "http://localhost:8080/announcement/addAnnouncement",
@@ -35,6 +42,7 @@ const Announcement = () => {
       setA_Author("");
       setDate_Posted("");
       setExpiry_Date("");
+      setIsAlertDialogOpen(true);
     } catch (error) {
       console.error(error);
     }
@@ -98,6 +106,7 @@ const Announcement = () => {
                   onChange={(e) => {
                     setA_title(e.target.value);
                   }}
+                  required
                 />
               </fieldset>
               <fieldset className="Fieldset">
@@ -111,6 +120,7 @@ const Announcement = () => {
                   onChange={(e) => {
                     setA_content(e.target.value);
                   }}
+                  required
                 />
               </fieldset>
               <fieldset className="Fieldset">
@@ -124,6 +134,7 @@ const Announcement = () => {
                   onChange={(e) => {
                     setA_Author(e.target.value);
                   }}
+                  required
                 />
               </fieldset>
               <fieldset className="Fieldset">
@@ -137,6 +148,7 @@ const Announcement = () => {
                   onChange={(e) => {
                     setDate_Posted(e.target.value);
                   }}
+                  required
                 />
               </fieldset>
               <fieldset className="Fieldset">
@@ -150,6 +162,7 @@ const Announcement = () => {
                   onChange={(e) => {
                     setExpiry_Date(e.target.value);
                   }}
+                  required
                 />
               </fieldset>
               <div
@@ -176,6 +189,31 @@ const Announcement = () => {
           </Dialog.Portal>
         </Dialog.Root>
       </div>
+      <AlertDialog.Root
+        open={isAlertDialogOpen}
+        onClose={() => setIsAlertDialogOpen(false)}
+      >
+        <AlertDialog.Overlay className="AlertDialogOverlay" />
+        <AlertDialog.Content className="AlertDialogContent">
+          <AlertDialog.Title className="AlertDialogTitle fw-bold">
+            Reminder
+          </AlertDialog.Title>
+          <AlertDialog.Description className="AlertDialogDescription">
+            Your announcement has been submitted for verification. We'll notify
+            you once it's approved and live. Thank you for your patience!
+          </AlertDialog.Description>
+          <div style={{ display: "flex", gap: 25, justifyContent: "flex-end" }}>
+            <AlertDialog.Cancel asChild>
+              <button
+                className="Button-alert mauve"
+                onClick={() => setIsAlertDialogOpen(false)}
+              >
+                Okay
+              </button>
+            </AlertDialog.Cancel>
+          </div>
+        </AlertDialog.Content>
+      </AlertDialog.Root>
     </>
   );
 };

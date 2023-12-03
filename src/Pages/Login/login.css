@@ -178,3 +178,30 @@ button {
 .CheckboxIndicator {
     color: var(--violet-11);
 }
+
+.failed-message {
+    background-color: #f8514966;
+    border: solid 1px #f85149;
+    border-radius: 5px;
+    width: 350px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.failed-message p {
+    margin: 0;
+}
+
+.success-message {
+    background-color: #13915a;
+    border: solid 1px #3dd68c;
+    border-radius: 5px;
+    width: 350px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.success-message p {
+    margin: 0;
+    color: white;
+}

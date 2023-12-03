@@ -5,6 +5,7 @@ import axios from "axios";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
+import CloseIcon from "@mui/icons-material/Close";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -14,6 +15,11 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confPass, setConfPass] = useState("");
+  const [appear, setAppear] = useState(false);
+
+  const handleAppear = () => {
+    setAppear(true);
+  };
 
   const handleRegister = async () => {
     try {
@@ -33,6 +39,7 @@ const Register = () => {
         }
       );
       console.log("User registered successfully: ", response.data);
+      handleAppear();
     } catch (error) {
       console.error("Error message: ", error.message);
     }
@@ -48,6 +55,18 @@ const Register = () => {
   };
   return (
     <div className="login-body">
+      {appear && (
+        <div className="success-message p-3 d-flex flex-row justify-content-around">
+          <p>Registered successfully.</p>
+          <div
+            onClick={() => {
+              setAppear(false);
+            }}
+          >
+            <CloseIcon sx={{ cursor: "pointer", color: "white" }} />
+          </div>
+        </div>
+      )}
       <div className="login-page">
         <h4>Register</h4>
         <Form.Root className="FormRoot" autoComplete="off">
