@@ -10,6 +10,7 @@ import Notification from "./Pages/Notification/Notification";
 import LandingLayout from "./Pages/LandingPage/LandingLayout";
 import Users from "./Pages/Dashboard/Users";
 import AdminDashboard from "./Pages/Dashboard/AdminDashboard";
+import AdminAnnouncement from "./Pages/Announcement/AdminAnnouncement";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
             <Route path="/event" element={<Event />} />
             <Route path="/users" element={<Users />} />
             <Route path="/adminDashboard" element={<AdminDashboard />} />
+            <Route path="/adminAnnouncement" element={<AdminAnnouncement />} />
           </Routes>
         </BrowserRouter>
       </div>

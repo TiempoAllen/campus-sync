@@ -191,14 +191,42 @@
     font-weight: 500;
 }
 
+.announcement-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    border-radius: 5px;
+    height: auto;
+}
+
+.announcement-list .pending-announcement {
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+
+.announcement-list p {
+    margin-bottom: 0;
+}
+
 .user-list {
     background-color: white;
     width: 100%;
-    height: auto;
     border-radius: 5px;
+    height: auto;
     padding: 10px;
 }
 
 .user-list p {
     margin: 0;
+    font-size: 18px;
+}
+
+.user-list .my-2 {
+    color: #374151;
+}
+
+.user-list .operation {
+    margin: 10px;
 }

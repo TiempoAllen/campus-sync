@@ -7,6 +7,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import IconButton from "@mui/material/IconButton";
 import * as Tabs from "@radix-ui/react-tabs";
 import axios from "axios";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 
 const Users = () => {
   const { user } = useAuth();
@@ -71,7 +73,11 @@ const Users = () => {
               </Tabs.Trigger> */}
             </Tabs.List>
           </div>
-          <Tabs.Content className="TabsContent" value="tab1">
+          <Tabs.Content
+            className="TabsContent"
+            value="tab1"
+            style={{ padding: "20px 0 20px 0" }}
+          >
             <div className="user-list d-flex flex-row justify-content-around">
               {/* <h1 className="text-center">No users</h1> */}
               <div>
@@ -79,7 +85,9 @@ const Users = () => {
                   First Name
                 </p>
                 {users.map((user, index) => (
-                  <p key={index}>{user.fname}</p>
+                  <p key={index} className="my-2">
+                    {user.fname}
+                  </p>
                 ))}
               </div>
               <div>
@@ -87,7 +95,9 @@ const Users = () => {
                   Last Name
                 </p>
                 {users.map((user, index) => (
-                  <p key={index}>{user.lname}</p>
+                  <p key={index} className="my-2">
+                    {user.lname}
+                  </p>
                 ))}
               </div>
               <div>
@@ -95,7 +105,9 @@ const Users = () => {
                   Email
                 </p>
                 {users.map((user, index) => (
-                  <p key={index}>{user.email}</p>
+                  <p key={index} className="my-2">
+                    {user.email}
+                  </p>
                 ))}
               </div>
               <div>
@@ -103,14 +115,21 @@ const Users = () => {
                   Role
                 </p>
                 {users.map((user, index) => (
-                  <p key={index}>{user.role}</p>
+                  <p key={index} className="my-2">
+                    {user.role}
+                  </p>
                 ))}
               </div>
               <div>
                 <p style={{ marginBottom: "8px" }} className="fw-bold">
                   Operation
                 </p>
-                <p>delete</p>
+                {users.map((user, index) => (
+                  <div key={index} className="operation text-center">
+                    <DeleteIcon sx={{ color: "#374151" }} />
+                    <EditIcon sx={{ color: "#374151" }} />
+                  </div>
+                ))}
               </div>
             </div>
           </Tabs.Content>

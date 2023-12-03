@@ -44,9 +44,9 @@ const AdminSideNav = ({ user }) => {
             </Link>
           </li>
           <li className="nav-item p-3 fs-5">
-            <Link to="/announcement" className="li-link">
+            <Link to="/adminAnnouncement" className="li-link">
               <img
-                src="/images/notification.svg"
+                src="/images/announcement.svg"
                 className="sidenav-logo me-1"
                 alt="notification-img"
                 style={{
@@ -54,7 +54,7 @@ const AdminSideNav = ({ user }) => {
                   widows: "30px",
                 }}
               ></img>
-              Posts
+              Announcement
             </Link>
           </li>
         </ul>
