@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Announcement.css";
 import Sidenav from "../Dashboard/Sidenav";
 import Header from "../Components/Header";
@@ -7,10 +7,38 @@ import AddIcon from "@mui/icons-material/Add";
 import * as Tabs from "@radix-ui/react-tabs";
 import * as Dialog from "@radix-ui/react-dialog";
 import { useAuth } from "../../AuthContext";
+import axios from "axios";
 
 const Announcement = () => {
   const { user } = useAuth();
-  console.log(user);
+  const [a_title, setA_title] = useState("");
+  const [a_content, setA_content] = useState("");
+  const [a_author, setA_Author] = useState("");
+  const [date_posted, setDate_Posted] = useState("");
+  const [expiry_date, setExpiry_Date] = useState("");
+
+  const saveAnnouncement = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/announcement/addAnnouncement",
+        {
+          title: a_title,
+          content: a_content,
+          author: a_author,
+          date_posted: date_posted,
+          expiry_date: expiry_date,
+        }
+      );
+      console.log(response.data);
+      setA_title("");
+      setA_content("");
+      setA_Author("");
+      setDate_Posted("");
+      setExpiry_Date("");
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <>
       <Sidenav user={user} />
@@ -60,34 +88,69 @@ const Announcement = () => {
                 Create a school announcement.
               </Dialog.Description>
               <fieldset className="Fieldset">
-                <label className="Label" htmlFor="event-title">
+                <label className="Label" htmlFor="announcement-title">
                   Announcement Title
                 </label>
-                <input className="Input" id="event-title" />
+                <input
+                  className="Input"
+                  id="announcement-title"
+                  value={a_title}
+                  onChange={(e) => {
+                    setA_title(e.target.value);
+                  }}
+                />
               </fieldset>
               <fieldset className="Fieldset">
-                <label className="Label" htmlFor="description">
+                <label className="Label" htmlFor="content">
                   Content
                 </label>
-                <input className="Input" id="description" />
+                <input
+                  className="Input"
+                  id="content"
+                  value={a_content}
+                  onChange={(e) => {
+                    setA_content(e.target.value);
+                  }}
+                />
               </fieldset>
               <fieldset className="Fieldset">
-                <label className="Label" htmlFor="location">
+                <label className="Label" htmlFor="author">
                   Author
                 </label>
-                <input className="Input" id="location" />
+                <input
+                  className="Input"
+                  id="author"
+                  value={a_author}
+                  onChange={(e) => {
+                    setA_Author(e.target.value);
+                  }}
+                />
               </fieldset>
               <fieldset className="Fieldset">
-                <label className="Label" htmlFor="date-time">
+                <label className="Label" htmlFor="date_posted">
                   Date Posted
                 </label>
-                <input className="Input" id="date-time" />
+                <input
+                  className="Input"
+                  id="date_posted"
+                  value={date_posted}
+                  onChange={(e) => {
+                    setDate_Posted(e.target.value);
+                  }}
+                />
               </fieldset>
               <fieldset className="Fieldset">
-                <label className="Label" htmlFor="participants">
+                <label className="Label" htmlFor="expiry_date">
                   Expiry Date
                 </label>
-                <input className="Input" id="participants" />
+                <input
+                  className="Input"
+                  id="expiry_date"
+                  value={expiry_date}
+                  onChange={(e) => {
+                    setExpiry_Date(e.target.value);
+                  }}
+                />
               </fieldset>
               <div
                 style={{
@@ -103,7 +166,9 @@ const Announcement = () => {
                     </button>
                   </Dialog.Close>
                   <Dialog.Close asChild>
-                    <button className="Button green">Save</button>
+                    <button className="Button green" onClick={saveAnnouncement}>
+                      Save
+                    </button>
                   </Dialog.Close>
                 </div>
               </div>

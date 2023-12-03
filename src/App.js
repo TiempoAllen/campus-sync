@@ -8,6 +8,8 @@ import Event from "./Pages/Event/Event";
 import Department from "./Pages/Department/Department";
 import Notification from "./Pages/Notification/Notification";
 import LandingLayout from "./Pages/LandingPage/LandingLayout";
+import Users from "./Pages/Dashboard/Users";
+import AdminDashboard from "./Pages/Dashboard/AdminDashboard";
 
 const App = () => {
   return (
@@ -23,6 +25,8 @@ const App = () => {
             <Route path="/notification" element={<Notification />} />
             <Route path="/department" element={<Department />} />
             <Route path="/event" element={<Event />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/adminDashboard" element={<AdminDashboard />} />
           </Routes>
         </BrowserRouter>
       </div>

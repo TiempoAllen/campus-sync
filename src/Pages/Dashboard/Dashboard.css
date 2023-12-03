@@ -190,3 +190,15 @@
     line-height: 1;
     font-weight: 500;
 }
+
+.user-list {
+    background-color: white;
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.user-list p {
+    margin: 0;
+}

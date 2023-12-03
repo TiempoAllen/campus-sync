@@ -18,10 +18,6 @@ const LoginPage = () => {
     navigate("/register");
   };
 
-  const navigateToDashboard = () => {
-    navigate("/dashboard");
-  };
-
   const handleLogin = async () => {
     try {
       const response = await axios.post("http://localhost:8080/user/login", {
@@ -30,10 +26,16 @@ const LoginPage = () => {
       });
       console.log(response.data);
       if (response.data) {
+        const user = response.data;
+
+        if (user.role === "Admin") {
+          navigate("/adminDashboard");
+        } else if (user.role === "User") {
+          navigate("/dashboard");
+        }
         setEmail("");
         setPassword("");
-        login(response.data);
-        navigateToDashboard();
+        login(user);
       }
     } catch (error) {
       console.log("Error: ", error.response.data);
