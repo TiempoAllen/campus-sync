@@ -204,6 +204,7 @@
     background-color: white;
     border-radius: 5px;
     padding: 10px 15px;
+    cursor: pointer;
 }
 
 .announcement-list p {
@@ -230,6 +231,7 @@
 .user-list .operation {
     margin: 10px;
 }
+
 
 .AlertDialogOverlay {
     background-color: var(--black-a9);
@@ -294,12 +296,13 @@
 }
 
 .Button.red {
-    background-color: var(--red-4);
-    color: var(--red-11);
+    background-color: red;
+    color: white;
+    width: auto;
 }
 
 .Button.red:hover {
-    background-color: var(--red-5);
+    background-color: rgb(238, 93, 93);
 }
 
 @keyframes overlayShow {

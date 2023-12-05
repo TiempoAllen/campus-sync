@@ -3,7 +3,7 @@ import * as Avatar from "@radix-ui/react-avatar";
 import "./Dashboard.css";
 import { Link, useNavigate } from "react-router-dom";
 
-const Sidenav = ({ user, logout }) => {
+const Sidenav = ({ user }) => {
   const navigate = useNavigate();
   return (
     <div>
@@ -116,7 +116,6 @@ const Sidenav = ({ user, logout }) => {
               class="dropdown-item"
               onClick={() => {
                 navigate("/login");
-                logout();
               }}
             >
               Sign out

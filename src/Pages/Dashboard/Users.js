@@ -174,9 +174,18 @@ const Users = () => {
             This action cannot be undone. This will permanently delete this user
             and remove the data from our servers.
           </AlertDialog.Description>
-          <div style={{ display: "flex", gap: 25, justifyContent: "flex-end" }}>
+          <div
+            style={{ display: "flex", gap: "10px", justifyContent: "flex-end" }}
+          >
             <AlertDialog.Cancel asChild>
-              <button className="Button-alert mauve">Okay</button>
+              <button
+                className="Button-alert mauve"
+                onClick={() => {
+                  setIsAlertDialogOpen(false);
+                }}
+              >
+                Cancel
+              </button>
             </AlertDialog.Cancel>
             <AlertDialog.Action asChild>
               <button
