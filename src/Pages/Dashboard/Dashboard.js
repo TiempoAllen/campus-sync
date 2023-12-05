@@ -4,11 +4,11 @@ import Body from "./Body";
 import { useAuth } from "../../AuthContext";
 
 const Dashboard = () => {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   console.log(user);
   return (
     <div className="dashboard-layout">
-      <Sidenav user={user} />
+      <Sidenav user={user} logout={logout} />
       <div className="dashboard">
         <Body user={user} />
       </div>

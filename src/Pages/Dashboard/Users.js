@@ -9,10 +9,22 @@ import * as Tabs from "@radix-ui/react-tabs";
 import axios from "axios";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import * as AlertDialog from "@radix-ui/react-alert-dialog";
 
 const Users = () => {
   const { user } = useAuth();
   const [users, setAllUsers] = useState([]);
+  const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
+
+  const deleteUser = async (uid) => {
+    try {
+      await axios.delete(`http://localhost:8080/user/deleteUser/${uid}`);
+      setIsAlertDialogOpen(true);
+      setAllUsers((prevUsers) => prevUsers.filter((usr) => usr.id !== uid));
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const getAllUsers = async () => {
     try {
@@ -125,9 +137,20 @@ const Users = () => {
                   Operation
                 </p>
                 {users.map((user, index) => (
-                  <div key={index} className="operation text-center">
-                    <DeleteIcon sx={{ color: "#374151" }} />
-                    <EditIcon sx={{ color: "#374151" }} />
+                  <div
+                    key={index}
+                    className="operation d-flex flex-row justify-content-between"
+                  >
+                    <div
+                      onClick={() => {
+                        deleteUser(user.uid);
+                      }}
+                    >
+                      <DeleteIcon
+                        sx={{ color: "#374151", cursor: "pointer" }}
+                      />
+                    </div>
+                    <EditIcon sx={{ color: "#374151", cursor: "pointer" }} />
                   </div>
                 ))}
               </div>
@@ -138,6 +161,37 @@ const Users = () => {
           </Tabs.Content> */}
         </Tabs.Root>
       </div>
+      <AlertDialog.Root
+        open={isAlertDialogOpen}
+        onClose={() => setIsAlertDialogOpen(false)}
+      >
+        <AlertDialog.Overlay className="AlertDialogOverlay" />
+        <AlertDialog.Content className="AlertDialogContent">
+          <AlertDialog.Title className="AlertDialogTitle fw-bold">
+            Are you sure you want to delete this user?
+          </AlertDialog.Title>
+          <AlertDialog.Description className="AlertDialogDescription">
+            This action cannot be undone. This will permanently delete this user
+            and remove the data from our servers.
+          </AlertDialog.Description>
+          <div style={{ display: "flex", gap: 25, justifyContent: "flex-end" }}>
+            <AlertDialog.Cancel asChild>
+              <button className="Button-alert mauve">Okay</button>
+            </AlertDialog.Cancel>
+            <AlertDialog.Action asChild>
+              <button
+                className="Button red"
+                onClick={() => {
+                  setIsAlertDialogOpen(false);
+                  window.location.reload();
+                }}
+              >
+                Yes, delete user
+              </button>
+            </AlertDialog.Action>
+          </div>
+        </AlertDialog.Content>
+      </AlertDialog.Root>
     </>
   );
 };

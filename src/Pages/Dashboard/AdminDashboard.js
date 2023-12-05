@@ -4,11 +4,11 @@ import AdminSideNav from "./AdminSideNav";
 import AdminBody from "./AdminBody";
 
 const AdminDashboard = () => {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   console.log(user);
   return (
     <div className="dashboard-layout">
-      <AdminSideNav user={user} />
+      <AdminSideNav user={user} logout={logout} />
       <div className="dashboard">
         <AdminBody user={user} />
       </div>

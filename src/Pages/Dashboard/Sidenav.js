@@ -1,9 +1,10 @@
 import React from "react";
 import * as Avatar from "@radix-ui/react-avatar";
 import "./Dashboard.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const Sidenav = ({ user }) => {
+const Sidenav = ({ user, logout }) => {
+  const navigate = useNavigate();
   return (
     <div>
       <div
@@ -110,8 +111,14 @@ const Sidenav = ({ user }) => {
           <li>
             <hr class="dropdown-divider" />
           </li>
-          <li>
-            <a class="dropdown-item" href="/login">
+          <li style={{ cursor: "pointer" }}>
+            <a
+              class="dropdown-item"
+              onClick={() => {
+                navigate("/login");
+                logout();
+              }}
+            >
               Sign out
             </a>
           </li>
