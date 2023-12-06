@@ -32,7 +32,6 @@ const Users = () => {
         "http://localhost:8080/user/getAllUsers"
       );
       setAllUsers(response.data);
-      console.log(response.data);
     } catch (error) {
       console.error(error);
     }

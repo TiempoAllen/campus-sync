@@ -13,12 +13,25 @@ const AdminAnnouncement = () => {
   const { user } = useAuth();
   const [announcements, setAllAnnouncements] = useState([]);
 
+  const approveAnnouncement = async (aid) => {
+    try {
+      await axios.put(
+        `http://localhost:8080/announcement/updateStatus?aid=${aid}`,
+        {
+          status: "Approved",
+        }
+      );
+      getAllPendingAnnouncements();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const getAllPendingAnnouncements = async () => {
     try {
       const response = await axios.get(
         "http://localhost:8080/announcement/getAllAnnouncements"
       );
-      console.log(response.data);
       setAllAnnouncements(response.data);
     } catch (error) {
       console.error(error);
@@ -81,114 +94,147 @@ const AdminAnnouncement = () => {
             <div className="announcement-list">
               {/* <h1 className="text-center">No users</h1> */}
 
-              {announcements.map((announcement, index) => (
-                <Dialog.Root>
-                  <Dialog.Trigger asChild>
-                    <div
-                      className="pending-announcement d-flex flex-row justify-content-between"
-                      key={index}
-                    >
-                      <p>{announcement.author}</p>
-                      <p>
-                        <span className="fw-bold">{announcement.title}</span> -{" "}
-                        {announcement.content}
-                      </p>
-                      <p>{announcement.date_posted}</p>
-                    </div>
-                  </Dialog.Trigger>
-                  <Dialog.Portal>
-                    <Dialog.Overlay className="DialogOverlay" />
-                    <Dialog.Content className="DialogContent">
-                      {/* <Dialog.Title className="DialogTitle fw-bold">
+              {announcements
+                .filter((announcement) => announcement.status === "Pending")
+                .map((announcement, index) => (
+                  <Dialog.Root>
+                    <Dialog.Trigger asChild>
+                      <div
+                        className="pending-announcement d-flex flex-row justify-content-between"
+                        key={index}
+                      >
+                        <p>{announcement.author}</p>
+                        <p>
+                          <span className="fw-bold">{announcement.title}</span>{" "}
+                          - {announcement.content}
+                        </p>
+                        <p>{announcement.date_posted}</p>
+                      </div>
+                    </Dialog.Trigger>
+                    <Dialog.Portal>
+                      <Dialog.Overlay className="DialogOverlay" />
+                      <Dialog.Content className="DialogContent">
+                        {/* <Dialog.Title className="DialogTitle fw-bold">
                         {announcement.title}
                       </Dialog.Title>
                       <Dialog.Description className="DialogDescription">
                         {announcement.content}
                       </Dialog.Description> */}
-                      <fieldset className="Fieldset">
-                        <label className="Label" htmlFor="title">
-                          Title
-                        </label>
-                        <input
-                          className="Input"
-                          id="title"
-                          required
-                          defaultValue={announcement.title}
-                          readOnly
-                        />
-                      </fieldset>
-                      <fieldset className="Fieldset">
-                        <label className="Label" htmlFor="content">
-                          Content
-                        </label>
-                        <input
-                          className="Input"
-                          id="content"
-                          required
-                          defaultValue={announcement.content}
-                          readOnly
-                        />
-                      </fieldset>
-                      <fieldset className="Fieldset">
-                        <label className="Label" htmlFor="author">
-                          Author
-                        </label>
-                        <input
-                          className="Input"
-                          id="author"
-                          required
-                          defaultValue={announcement.author}
-                          readOnly
-                        ></input>
-                      </fieldset>
-                      <fieldset className="Fieldset">
-                        <label className="Label" htmlFor="date_posted">
-                          Date Posted
-                        </label>
-                        <input
-                          className="Input"
-                          id="date_posted"
-                          defaultValue={announcement.date_posted}
-                          readOnly
-                        />
-                      </fieldset>
-                      <fieldset className="Fieldset">
-                        <label className="Label" htmlFor="expiry_date">
-                          Expiry Date
-                        </label>
-                        <input
-                          className="Input"
-                          id="expiry_date"
-                          defaultValue={announcement.expiry_date}
-                          readOnly
-                        />
-                      </fieldset>
-                      <div
-                        style={{
-                          display: "flex",
-                          marginTop: 25,
-                          justifyContent: "flex-end",
-                        }}
-                      >
-                        <div className="dialog-buttons">
-                          <Dialog.Close asChild>
-                            <button className="Button green" id="cancel-button">
-                              Cancel
-                            </button>
-                          </Dialog.Close>
-                          <Dialog.Close asChild>
-                            <button className="Button green">Approve</button>
-                          </Dialog.Close>
+                        <fieldset className="Fieldset">
+                          <label className="Label" htmlFor="title">
+                            Title
+                          </label>
+                          <input
+                            className="Input"
+                            id="title"
+                            required
+                            defaultValue={announcement.title}
+                            readOnly
+                          />
+                        </fieldset>
+                        <fieldset className="Fieldset">
+                          <label className="Label" htmlFor="content">
+                            Content
+                          </label>
+                          <input
+                            className="Input"
+                            id="content"
+                            required
+                            defaultValue={announcement.content}
+                            readOnly
+                          />
+                        </fieldset>
+                        <fieldset className="Fieldset">
+                          <label className="Label" htmlFor="author">
+                            Author
+                          </label>
+                          <input
+                            className="Input"
+                            id="author"
+                            required
+                            defaultValue={announcement.author}
+                            readOnly
+                          ></input>
+                        </fieldset>
+                        <fieldset className="Fieldset">
+                          <label className="Label" htmlFor="date_posted">
+                            Date Posted
+                          </label>
+                          <input
+                            className="Input"
+                            id="date_posted"
+                            defaultValue={announcement.date_posted}
+                            readOnly
+                          />
+                        </fieldset>
+                        <fieldset className="Fieldset">
+                          <label className="Label" htmlFor="expiry_date">
+                            Expiry Date
+                          </label>
+                          <input
+                            className="Input"
+                            id="expiry_date"
+                            defaultValue={announcement.expiry_date}
+                            readOnly
+                          />
+                        </fieldset>
+                        <div
+                          style={{
+                            display: "flex",
+                            marginTop: 25,
+                            justifyContent: "flex-end",
+                          }}
+                        >
+                          <div className="dialog-buttons">
+                            <Dialog.Close asChild>
+                              <button
+                                className="Button green"
+                                id="cancel-button"
+                              >
+                                Cancel
+                              </button>
+                            </Dialog.Close>
+                            <Dialog.Close asChild>
+                              <button
+                                className="Button green"
+                                onClick={() => {
+                                  approveAnnouncement(announcement.aid);
+                                }}
+                              >
+                                Approve
+                              </button>
+                            </Dialog.Close>
+                          </div>
                         </div>
-                      </div>
-                    </Dialog.Content>
-                  </Dialog.Portal>
-                </Dialog.Root>
-              ))}
+                      </Dialog.Content>
+                    </Dialog.Portal>
+                  </Dialog.Root>
+                ))}
             </div>
           </Tabs.Content>
-          <Tabs.Content className="TabsContent" value="tab2">
-            <h1 className="text-center">No posts</h1>
+          <Tabs.Content
+            className="TabsContent"
+            value="tab2"
+            style={{ padding: "20px 0 20px 0" }}
+          >
+            <div className="announcement-list">
+              {/* <h1 className="text-center">No posts</h1> */}
+              {announcements
+                .filter((announcement) => announcement.status === "Approved")
+                .map((announcement, index) => (
+                  <div
+                    className="pending-announcement d-flex flex-row justify-content-between"
+                    key={index}
+                  >
+                    <p>{announcement.author}</p>
+                    <p>
+                      <span className="fw-bold">{announcement.title}</span> -{" "}
+                      {announcement.content}
+                    </p>
+                    <p>{announcement.date_posted}</p>
+                  </div>
+                ))}
+            </div>
           </Tabs.Content>
         </Tabs.Root>
       </div>
