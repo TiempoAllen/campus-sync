@@ -8,10 +8,13 @@ import IconButton from "@mui/material/IconButton";
 import * as Tabs from "@radix-ui/react-tabs";
 import * as Dialog from "@radix-ui/react-dialog";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import AnnouncementDetails from "./AnnouncementDetails";
 
 const AdminAnnouncement = () => {
   const { user } = useAuth();
   const [announcements, setAllAnnouncements] = useState([]);
+  const navigate = useNavigate();
 
   const approveAnnouncement = async (aid) => {
     try {
@@ -106,7 +109,28 @@ const AdminAnnouncement = () => {
                         <p>{announcement.author}</p>
                         <p>
                           <span className="fw-bold">{announcement.title}</span>{" "}
-                          - {announcement.content}
+                          -{" "}
+                          {announcement.content
+                            .split(" ")
+                            .slice(0, 10)
+                            .join(" ")}
+                          {announcement.content.split(" ").length > 10 && "..."}
+                          {announcement.content.split(" ").length > 10 && (
+                            <Link
+                              to={{
+                                pathname: "/adminAnnouncement/announcementName",
+                                state: { announcement },
+                              }}
+                              style={{
+                                textDecoration: "none",
+                                color: "#17A1FA",
+                                cursor: "pointer",
+                              }}
+                            >
+                              {" "}
+                              See More
+                            </Link>
+                          )}
                         </p>
                         <p>{announcement.date_posted}</p>
                       </div>
@@ -222,17 +246,42 @@ const AdminAnnouncement = () => {
               {announcements
                 .filter((announcement) => announcement.status === "Approved")
                 .map((announcement, index) => (
-                  <div
-                    className="pending-announcement d-flex flex-row justify-content-between"
+                  <Link
+                    to={{
+                      pathname: `/adminAnnouncement/announcementDetails/${announcement.aid}`,
+                    }}
                     key={index}
+                    style={{
+                      textDecoration: "none",
+                      color: "black",
+                      cursor: "pointer",
+                    }}
                   >
-                    <p>{announcement.author}</p>
-                    <p>
-                      <span className="fw-bold">{announcement.title}</span> -{" "}
-                      {announcement.content}
-                    </p>
-                    <p>{announcement.date_posted}</p>
-                  </div>
+                    <div
+                      className="pending-announcement d-flex flex-row justify-content-between"
+                      key={index}
+                    >
+                      <p>{announcement.author}</p>
+                      <p>
+                        <span className="fw-bold">{announcement.title}</span> -{" "}
+                        {announcement.content.split(" ").slice(0, 10).join(" ")}
+                        {announcement.content.split(" ").length > 10 && "..."}
+                        {announcement.content.split(" ").length > 10 && (
+                          <span
+                            style={{
+                              textDecoration: "none",
+                              color: "#17A1FA",
+                              cursor: "pointer",
+                            }}
+                          >
+                            {" "}
+                            See More
+                          </span>
+                        )}
+                      </p>
+                      <p>{announcement.date_posted}</p>
+                    </div>
+                  </Link>
                 ))}
             </div>
           </Tabs.Content>

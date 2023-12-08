@@ -91,3 +91,52 @@
         transform: translate(-50%, -50%) scale(1);
     }
 }
+
+.approved-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.approved-list .approved-announcement {
+    background-color: white;
+    padding: 15px 15px 15px 10px;
+    border-radius: 15px;
+}
+
+.approved-list .approved-announcement .name span {
+    color: #838383;
+}
+
+
+.approved-list p {
+    margin-bottom: 0;
+}
+
+.AvatarRoot-ann {
+    display: inline-flex;
+    align-items: center;
+    justify-content: start;
+    vertical-align: middle;
+    margin: 0 10px;
+    overflow: hidden;
+    user-select: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+    background-color: var(--black-a3);
+}
+
+.AvatarFallback-ann {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: #374151;
+    font-size: 15px;
+    line-height: 1;
+    font-weight: 500;
+}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Announcement.css";
 import Sidenav from "../Dashboard/Sidenav";
 import Header from "../Components/Header";
@@ -8,6 +8,7 @@ import * as Tabs from "@radix-ui/react-tabs";
 import * as Dialog from "@radix-ui/react-dialog";
 import { useAuth } from "../../AuthContext";
 import axios from "axios";
+import * as Avatar from "@radix-ui/react-avatar";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 
 const Announcement = () => {
@@ -18,6 +19,22 @@ const Announcement = () => {
   const [date_posted, setDate_Posted] = useState("");
   const [expiry_date, setExpiry_Date] = useState("");
   const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
+  const [announcements, setAnnouncement] = useState([]);
+
+  const approvedAnnouncement = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:8080/announcement/getAllAnnouncements"
+      );
+      setAnnouncement(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    approvedAnnouncement();
+  }, []);
 
   const saveAnnouncement = async () => {
     if (!a_title || !a_content || !a_author || !date_posted || !expiry_date) {
@@ -44,7 +61,7 @@ const Announcement = () => {
       setExpiry_Date("");
       setIsAlertDialogOpen(true);
     } catch (error) {
-      console.error(error);
+      console.error(error.response.data.message);
     }
   };
   return (
@@ -63,8 +80,57 @@ const Announcement = () => {
               </Tabs.Trigger>
             </Tabs.List>
           </div>
-          <Tabs.Content className="TabsContent" value="tab1">
-            <h1 className="text-center">No announcements</h1>
+          <Tabs.Content
+            className="TabsContent"
+            value="tab1"
+            style={{ padding: "15px 0" }}
+          >
+            {/* <h1 className="text-center">No announcements</h1> */}
+            <div className="approved-list">
+              {announcements
+                .filter((announcement) => announcement.status === "Approved")
+                .map((announcement, index) => (
+                  <div
+                    className="approved-announcement d-flex flex-row flex-nowrap"
+                    key={index}
+                  >
+                    <div className="avatar">
+                      <Avatar.Root className="AvatarRoot-ann">
+                        <Avatar.Fallback
+                          className="AvatarFallback-ann"
+                          style={{ backgroundColor: "#B3B3B3" }}
+                        >
+                          JD
+                        </Avatar.Fallback>
+                      </Avatar.Root>
+                    </div>
+                    <div
+                      className="d-flex flex-column"
+                      style={{ width: "100%" }}
+                    >
+                      <div className="name d-flex flex-row justify-content-between">
+                        <p className="fw-bold">
+                          {announcement.author}{" "}
+                          <span>@{announcement.author}</span>
+                        </p>
+                        <p>{announcement.date_posted}</p>
+                      </div>
+                      <p className="fw-bold">{announcement.title}</p>
+                      <p>{announcement.content}</p>
+                      <div
+                        className="d-flex justify-content-end"
+                        style={{ width: "100%" }}
+                      >
+                        <img
+                          src="/images/comment.svg"
+                          alt="comment"
+                          style={{ width: "20px", height: "auto" }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                ))}
+            </div>
           </Tabs.Content>
           <Tabs.Content className="TabsContent" value="tab2">
             <h1 className="text-center">No announcements for today</h1>

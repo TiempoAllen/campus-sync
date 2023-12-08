@@ -11,6 +11,7 @@ import LandingLayout from "./Pages/LandingPage/LandingLayout";
 import Users from "./Pages/Dashboard/Users";
 import AdminDashboard from "./Pages/Dashboard/AdminDashboard";
 import AdminAnnouncement from "./Pages/Announcement/AdminAnnouncement";
+import AnnouncementDetails from "./Pages/Announcement/AnnouncementDetails";
 
 const App = () => {
   return (
@@ -29,6 +30,10 @@ const App = () => {
             <Route path="/users" element={<Users />} />
             <Route path="/adminDashboard" element={<AdminDashboard />} />
             <Route path="/adminAnnouncement" element={<AdminAnnouncement />} />
+            <Route
+              path="/adminAnnouncement/announcementDetails/:aid"
+              element={<AnnouncementDetails />}
+            />
           </Routes>
         </BrowserRouter>
       </div>
