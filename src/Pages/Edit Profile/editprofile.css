@@ -1,0 +1,35 @@
+.form {
+    margin: 0 auto;
+    width: 50%;
+    padding: 20px;
+    
+}
+img {
+    display: block;
+    margin: 0 auto;
+    width: 200px;
+    height: auto;
+}
+.form-container {
+    display: flex;
+    align-items: center;
+    margin: 200px auto;
+    width: 500px;
+    height: 200px;
+    background-color: #A09B9B;
+    border-radius: 20px;
+}
+
+label {
+    text-align: right;
+    margin-bottom: 8px;
+}
+
+img {
+    max-width: 100px;
+    max-height: 100px;
+}
+input, img {
+    margin-bottom: 16px;
+}
+

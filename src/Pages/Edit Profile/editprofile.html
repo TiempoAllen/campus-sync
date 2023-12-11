@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" type="text/css" href="editprofile.css">
+    
+</head>
+<body>
+
+    <div class="form-container">
+        <form action="/editprofile" method="post" onsubmit="return validateForm()">
+            <input type="file" id="picture" name="picture" accept="image/*">
+            <img id="preview" style="display: none;"> <br>
+        
+            <label for="fname">First name:</label>
+            <input type="text" id="fname" name="fname" required>
+        
+            <label for="lname">Last name:</label>
+            <input type="text" id="lname" name="lname" required> <br>
+        
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required> <br>
+        
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required> <br>
+        
+            <label for="confirm_password">Confirm password:</label>
+            <input type="password" id="confirm_password" name="confirm_password" required> <br>
+        
+            <input type="submit" value="Save">
+        </form>
+    </div>
+
+    <script>
+        // Mock user data (replace with actual data retrieval logic)
+        const mockUserData = {
+            fname: "John",
+            lname: "Doe",
+            email: "john.doe@example.com",
+            password: "securepassword"
+        };
+
+        // Set form fields with mock data
+        document.getElementById("fname").value = mockUserData.fname;
+        document.getElementById("lname").value = mockUserData.lname;
+        document.getElementById("email").value = mockUserData.email;
+        document.getElementById("password").value = mockUserData.password;
+        document.getElementById("confirm_password").value = mockUserData.password;
+
+        const fileInput = document.getElementById('picture');
+        const previewImage = document.getElementById('preview');
+
+        //load picture upon chosen file
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                previewImage.src = e.target.result;
+                previewImage.style.display = 'block';
+            };
+
+            reader.readAsDataURL(file);
+        });
+
+        // check if password match
+        function validateForm() {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirm_password").value;
+
+            if (password !== confirmPassword) {
+                alert("Password do not match.");
+                return false;
+            }
+
+            
+            return true;
+        }
+    </script>
+</body>
+</html>
