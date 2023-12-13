@@ -9,61 +9,88 @@
 </head>
 <body>
 
-    <div class="form-container">
-        <form action="/editprofile" method="post" onsubmit="return validateForm()">
-            <input type="file" id="picture" name="picture" accept="image/*">
-            <img id="preview" style="display: none;"> <br>
+    <div class="container-xl px-4 mt-4">
         
-            <label for="fname">First name:</label>
-            <input type="text" id="fname" name="fname" required>
-        
-            <label for="lname">Last name:</label>
-            <input type="text" id="lname" name="lname" required> <br>
-        
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required> <br>
-        
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required> <br>
-        
-            <label for="confirm_password">Confirm password:</label>
-            <input type="password" id="confirm_password" name="confirm_password" required> <br>
-        
-            <input type="submit" value="Save">
-        </form>
+        <hr class="mt-0 mb-4">
+        <div class="row">
+            <div class="col-xl-4">
+                <!-- Profile picture card-->
+                <div class="card mb-4 mb-xl-0">
+                    <div class="card-header">Profile Picture</div>
+                    <div class="card-body text-center">
+                        <!-- Profile picture image-->
+                        <img class="img-account-profile rounded-circle mb-2" id="profilePicture" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt=""> <br>
+                        <!-- Profile picture help block-->    
+                        <!-- Profile picture upload button-->
+                        <input type="file" id="picture" name="picture" accept="image/*" onchange="updateProfilePicture(event)">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8">
+                <!-- Account details card-->
+                <div class="card mb-4">
+                    <div class="card-header">Account Details</div>
+                    <div class="card-body">
+                        <form>
+                            <!-- Form Group (username)-->
+                           <!--  <div class="mb-3">
+                                <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
+                                <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="username">
+                            </div> -->
+                            <!-- Form Row-->
+                            <div class="row gx-3 mb-3">
+                                <!-- Form Group (first name)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputFirstName">First name</label>
+                                    <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="Valerie">
+                                </div>
+                                <!-- Form Group (last name)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputLastName">Last name</label>
+                                    <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="Luna">
+                                </div>
+                            </div>
+                            <!-- Form Group (email address)-->
+                            <div class="mb-3">
+                                <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                                <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value="name@example.com">
+                            </div>
+                            <!-- Form Row        -->
+                            <div class="row gx-3 mb-3">
+                                <!-- Form Group (Password)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputOrgName">Password</label>
+                                    <input class="form-control" id="inputPassword" type="password">
+                                </div>
+                                <!-- Form Group (Confirm Password)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="confirmPassword">Confirm Password</label>
+                                    <input class="form-control" id="confirmPassword" type="password">
+                                </div>
+                            </div>
+                            <!-- Form Row-->
+                            <div class="row gx-3 mb-3">
+                                <!-- Form Group (phone number)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputPhone">Phone number</label>
+                                    <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value="555-123-4567">
+                                </div>
+                                <!-- Form Group (birthday)-->
+                                <div class="col-md-6">
+                                    <label class="small mb-1" for="inputBirthday">Birthday</label>
+                                    <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value="06/10/1988">
+                                </div>
+                            </div>
+                            <!-- Save changes button-->
+                            <button class="btn btn-primary" type="button">Save changes</button> <button type="button">Discard</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
-        // Mock user data (replace with actual data retrieval logic)
-        const mockUserData = {
-            fname: "John",
-            lname: "Doe",
-            email: "john.doe@example.com",
-            password: "securepassword"
-        };
-
-        // Set form fields with mock data
-        document.getElementById("fname").value = mockUserData.fname;
-        document.getElementById("lname").value = mockUserData.lname;
-        document.getElementById("email").value = mockUserData.email;
-        document.getElementById("password").value = mockUserData.password;
-        document.getElementById("confirm_password").value = mockUserData.password;
-
-        const fileInput = document.getElementById('picture');
-        const previewImage = document.getElementById('preview');
-
-        //load picture upon chosen file
-        fileInput.addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            const reader = new FileReader();
-
-            reader.onload = function(e) {
-                previewImage.src = e.target.result;
-                previewImage.style.display = 'block';
-            };
-
-            reader.readAsDataURL(file);
-        });
 
         // check if password match
         function validateForm() {
@@ -77,6 +104,23 @@
 
             
             return true;
+
+            
+        }
+        //update profile picture
+        function updateProfilePicture(event) {
+            const input = event.target;
+            const profilePicture = document.getElementById('profilePicture');
+
+            if (input.files && input.files[0]) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                profilePicture.src = e.target.result;
+            };
+
+            reader.readAsDataURL(input.files[0]);
+            }
         }
     </script>
 </body>
