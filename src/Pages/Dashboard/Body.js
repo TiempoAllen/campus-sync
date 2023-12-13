@@ -19,6 +19,8 @@ const getDate = () => {
   return today.toLocaleDateString("en-us", options);
 };
 
+const day = new Date().toLocaleDateString("en-US", { day: "numeric" });
+
 const weekday = new Date().toLocaleDateString("en-US", { weekday: "long" });
 
 const date = getDate();
@@ -96,7 +98,7 @@ const Body = ({ user }) => {
 
           <div className="upcoming-events mt-3">
             <p className="h5 fw-bold">Upcoming Events</p>
-            <div className="todo-events my-3">
+            {/* <div className="todo-events my-3">
               <div className="date">
                 <p style={{ fontSize: "18px", marginBottom: "0" }}>16</p>
                 <p style={{ fontSize: "14px", marginBottom: "0" }}>Nov</p>
@@ -122,7 +124,7 @@ const Body = ({ user }) => {
                   marginLeft: "45px",
                 }}
               />
-            </div>
+            </div> */}
           </div>
         </header>
       </div>

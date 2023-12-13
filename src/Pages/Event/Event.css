@@ -50,6 +50,7 @@
     line-height: 1;
     font-weight: 500;
     height: 35px;
+    margin-bottom: 10px;
 }
 
 .Button.violet {
@@ -80,9 +81,9 @@
 
 .Button.green {
     background-color: #1A62D7;
-    color: var(--green-11);
+    color: white;
     width: auto;
-    margin: 0;
+    margin: 0 0 0 10px;
 }
 
 .Button.green:hover {
@@ -127,21 +128,32 @@
     width: 150px;
 }
 
-.Input {
+.dialog-input {
+    width: 100%;
+}
+
+.Input,
+.Textarea {
     width: 100%;
     flex: 1;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: 10px;
+    border-radius: 5px;
+    border: solid 1px #424242;
     padding: 0 10px;
     font-size: 15px;
     line-height: 1;
     color: white;
     box-shadow: 0 0 0 1px var(--violet-7);
-    background-color: #121212;
+    background-color: #ffffff;
     padding: 5px 8px;
     height: 60px;
+}
+
+.Textarea {
+    resize: none;
+    padding: 10px;
 }
 
 .Input:focus {
@@ -168,4 +180,22 @@
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
     }
+}
+
+.events {
+    width: 100%;
+}
+
+.events .contents {
+    width: 100%;
+}
+
+.events p {
+    margin-bottom: 0;
+}
+
+.SeparatorRoot[data-orientation='vertical'] {
+    background-color: #d9d9d9;
+    height: 83px;
+    width: 1px;
 }

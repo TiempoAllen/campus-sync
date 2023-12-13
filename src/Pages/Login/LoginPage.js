@@ -67,7 +67,15 @@ const LoginPage = () => {
         </div>
       )}
       <div className="login-page">
-        <img src="/images/logo.png" className="app-logo" alt="logo" />
+        <img
+          src="/images/logo.png"
+          className="app-logo"
+          alt="logo"
+          onClick={() => {
+            navigate("/");
+          }}
+          style={{ cursor: "pointer" }}
+        />
         <Form.Root className="FormRoot" autoComplete="off">
           <Form.Field className="FormField" name="email">
             <div
