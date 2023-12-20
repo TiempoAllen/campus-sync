@@ -1,6 +1,6 @@
 import React from "react";
 import Sidenav from "./Sidenav";
-import Body from "./Body";
+import Body from "./Body.js";
 import { useAuth } from "../../AuthContext";
 
 const Dashboard = () => {

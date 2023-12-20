@@ -93,7 +93,9 @@ const Sidenav = ({ user }) => {
           style={{ cursor: "pointer" }}
         >
           <Avatar.Root className="AvatarRoot">
-            <Avatar.Fallback className="AvatarFallback">JD</Avatar.Fallback>
+            <Avatar.Fallback className="AvatarFallback">{`${user.fname.charAt(
+              0
+            )}${user.lname.charAt(0)}`}</Avatar.Fallback>
           </Avatar.Root>
           <div className="name">
             <p className="fw-bold">
@@ -103,8 +105,13 @@ const Sidenav = ({ user }) => {
           </div>
         </div>
         <ul class="dropdown-menu dropdown-menu-white text-small shadow">
-          <li>
-            <a class="dropdown-item" href="#">
+          <li style={{ cursor: "pointer" }}>
+            <a
+              class="dropdown-item"
+              onClick={() => {
+                navigate("/profile");
+              }}
+            >
               Profile
             </a>
           </li>

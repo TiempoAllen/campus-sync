@@ -184,10 +184,13 @@
 
 .events {
     width: 100%;
+    cursor: pointer;
+    border-radius: 10px;
 }
 
 .events .contents {
     width: 100%;
+    padding: 10px;
 }
 
 .events p {
@@ -196,6 +199,6 @@
 
 .SeparatorRoot[data-orientation='vertical'] {
     background-color: #d9d9d9;
-    height: 83px;
+    height: 100%;
     width: 1px;
 }

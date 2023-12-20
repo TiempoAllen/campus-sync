@@ -3,9 +3,11 @@
     display: flex;
     flex-direction: row;
     justify-content: start;
+    position: relative;
     padding: 30px;
     margin-left: 360px;
-    height: 100vh;
+    min-height: 100vh;
+    max-height: 100%;
 }
 
 .AlertDialogOverlay {
@@ -175,4 +177,8 @@
 
 .announcement-details .body p {
     margin-bottom: 0;
+}
+
+.Label {
+    font-weight: bold;
 }

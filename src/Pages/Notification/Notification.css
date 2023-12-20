@@ -1,0 +1,21 @@
+.notification-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+.notification {
+    background-color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.notification p {
+    margin-bottom: 0;
+}
+
+.notification .content {
+    width: 100%;
+}

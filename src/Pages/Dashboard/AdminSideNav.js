@@ -19,16 +19,6 @@ const AdminSideNav = ({ user, logout }) => {
       >
         <img src="/images/logo-white.png" className="app-logo" alt="logo" />
         <ul className="nav nav-pills flex-column mb-auto">
-          <li className="nav-item p-3 fs-5">
-            <Link to="/adminDashboard" className="li-link">
-              <img
-                src="/images/dashboard.svg"
-                className="sidenav-logo me-1"
-                alt="dashboard-img"
-              ></img>
-              Home
-            </Link>
-          </li>
           <li className="nav-item p-3 fs-5" style={{ marginLeft: "5px" }}>
             <Link to="/users" className="li-link">
               <img
@@ -56,6 +46,34 @@ const AdminSideNav = ({ user, logout }) => {
                 }}
               ></img>
               Announcement
+            </Link>
+          </li>
+          <li className="nav-item p-3 fs-5">
+            <Link to="/adminDepartment" className="li-link">
+              <img
+                src="/images/department.svg"
+                className="sidenav-logo me-1"
+                alt="event-img"
+                style={{
+                  height: "30px",
+                  widows: "30px",
+                }}
+              ></img>
+              Department
+            </Link>
+          </li>
+          <li className="nav-item p-3 fs-5">
+            <Link to="/adminEvent" className="li-link">
+              <img
+                src="/images/event.svg"
+                className="sidenav-logo me-1"
+                alt="event-img"
+                style={{
+                  height: "30px",
+                  widows: "30px",
+                }}
+              ></img>
+              Event
             </Link>
           </li>
         </ul>

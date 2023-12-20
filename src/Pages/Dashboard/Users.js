@@ -155,9 +155,6 @@ const Users = () => {
               </div>
             </div>
           </Tabs.Content>
-          {/* <Tabs.Content className="TabsContent" value="tab2">
-            <h1 className="text-center">No posts</h1>
-          </Tabs.Content> */}
         </Tabs.Root>
       </div>
       <AlertDialog.Root

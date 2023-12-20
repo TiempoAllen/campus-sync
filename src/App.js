@@ -9,9 +9,11 @@ import Department from "./Pages/Department/Department";
 import Notification from "./Pages/Notification/Notification";
 import LandingLayout from "./Pages/LandingPage/LandingLayout";
 import Users from "./Pages/Dashboard/Users";
-import AdminDashboard from "./Pages/Dashboard/AdminDashboard";
 import AdminAnnouncement from "./Pages/Announcement/AdminAnnouncement";
 import AnnouncementDetails from "./Pages/Announcement/AnnouncementDetails";
+import AdminEvent from "./Pages/Event/AdminEvent";
+import AdminDepartment from "./Pages/Department/AdminDepartment";
+import Profile from "./Pages/Login/Profile";
 
 const App = () => {
   return (
@@ -28,12 +30,14 @@ const App = () => {
             <Route path="/department" element={<Department />} />
             <Route path="/event" element={<Event />} />
             <Route path="/users" element={<Users />} />
-            <Route path="/adminDashboard" element={<AdminDashboard />} />
             <Route path="/adminAnnouncement" element={<AdminAnnouncement />} />
             <Route
               path="/adminAnnouncement/announcementDetails/:aid"
               element={<AnnouncementDetails />}
             />
+            <Route path="/adminEvent" element={<AdminEvent />} />
+            <Route path="/adminDepartment" element={<AdminDepartment />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </BrowserRouter>
       </div>

@@ -35,7 +35,7 @@ const LoginPage = () => {
         const user = response.data;
 
         if (user.role === "Admin") {
-          navigate("/adminDashboard");
+          navigate("/users");
         } else if (user.role === "User") {
           navigate("/dashboard");
         }
@@ -134,7 +134,7 @@ const LoginPage = () => {
               />
             </Form.Control>
           </Form.Field>
-          <div style={{ display: "flex", alignItems: "center" }}>
+          {/* <div style={{ display: "flex", alignItems: "center" }}>
             <Checkbox.Root className="CheckboxRoot" id="c1">
               <Checkbox.Indicator className="CheckboxIndicator">
                 <CheckIcon />
@@ -146,7 +146,7 @@ const LoginPage = () => {
               </label>
               <p>Forgot Password?</p>
             </div>
-          </div>
+          </div> */}
           <Form.Submit asChild>
             <button
               type="button"
