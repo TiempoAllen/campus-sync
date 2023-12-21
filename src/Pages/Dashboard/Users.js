@@ -16,6 +16,14 @@ const Users = () => {
   const [users, setAllUsers] = useState([]);
   const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
 
+  const handleOpenDialog = () => {
+    setIsAlertDialogOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setIsAlertDialogOpen(false);
+  };
+
   const deleteUser = async (uid) => {
     try {
       await axios.delete(`http://localhost:8080/user/deleteUser/${uid}`);
@@ -138,7 +146,7 @@ const Users = () => {
                 {users.map((user, index) => (
                   <div
                     key={index}
-                    className="operation d-flex flex-row justify-content-between"
+                    className="operation d-flex flex-row justify-content-center"
                   >
                     <div
                       onClick={() => {
@@ -149,7 +157,6 @@ const Users = () => {
                         sx={{ color: "#374151", cursor: "pointer" }}
                       />
                     </div>
-                    <EditIcon sx={{ color: "#374151", cursor: "pointer" }} />
                   </div>
                 ))}
               </div>

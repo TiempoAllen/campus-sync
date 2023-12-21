@@ -253,7 +253,7 @@ const ContextMenuPortal = ({ event, editEvent, deleteEvent }) => {
             </AlertDialog.Title>
             <AlertDialog.Description className="AlertDialogDescription">
               This action cannot be undone. This will permanently delete your
-              account and remove your data from our servers.
+              post and remove your data from our servers.
             </AlertDialog.Description>
             <div
               style={{ display: "flex", gap: 25, justifyContent: "flex-end" }}
